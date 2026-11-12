@@ -20,7 +20,7 @@
 
 1. Скачайте архив из раздела **[Releases](../../releases)**:
    - `reels-montazh.zip` — полный, для Claude Code и Codex;
-   - `reels-montazh-для-сайта.zip` — лёгкий, для загрузки на claude.ai (там навык помогает с планированием, но не монтирует).
+   - `reels-montazh-site.zip` — лёгкий, для загрузки на claude.ai (там навык помогает с планированием, но не монтирует).
 2. Распакуйте в `~/.claude/skills/` (Claude Code) или `~/.codex/skills/` (Codex).
 3. Поставьте ffmpeg, Python 3.11+, Node.js 20+ и запустите установщик из папки навыка:
    `install\setup.ps1` (Windows) или `bash install/setup.sh` (macOS / Linux).

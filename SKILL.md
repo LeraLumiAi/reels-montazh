@@ -64,7 +64,7 @@ description: Монтаж вертикальных Reels / Shorts / TikTok из 
 - **Claude Code:** папку навыка — в `~/.claude/skills/reels-montazh/` → из неё `install\setup.ps1` (Windows) или
   `bash install/setup.sh` → в папке проекта `<python навыка> <навык>/scripts/init.py`.
 - **Codex:** то же, но папка — `~/.codex/skills/reels-montazh/` (или `.codex/skills/` в проекте).
-- **Claude на сайте:** Customize → Skills → «+» → Upload a skill → лёгкий `reels-montazh-для-сайта.zip` (нужно выполнение кода).
+- **Claude на сайте:** Customize → Skills → «+» → Upload a skill → лёгкий `reels-montazh-site.zip` (нужно выполнение кода).
   В облаке монтаж видео не запускается — там навык помогает с хуками, выжимкой, раскадровкой и текстами карточек.
 
 Если `init.py` показывает строки с ✗ — сначала доустановить то, что в них написано.
