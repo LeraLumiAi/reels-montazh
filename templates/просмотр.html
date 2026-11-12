@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Просмотр ролика</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #2A221D; color: #F3EAE0; font-family: system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  video { max-height: calc(100vh - 90px); max-width: 100%; background: #000; border-radius: 12px; }
+  button { font: 600 18px system-ui, sans-serif; padding: 12px 28px; border: 0; border-radius: 999px; background: #E0BE7A; color: #2A221D; cursor: pointer; }
+  .name { font-size: 14px; color: #BFAE9E; }
+</style>
+</head>
+<body>
+  <div class="name" id="name"></div>
+  <video id="v" controls playsinline preload="auto"></video>
+  <button id="b">▶ Смотреть</button>
+<script>
+  // ?f=путь к webm относительно рабочей папки; несколько роликов — несколько f, сверху кнопки переключения
+  const files = new URLSearchParams(location.search).getAll('f');
+  const v = document.getElementById('v'), b = document.getElementById('b');
+  const nameEl = document.getElementById('name');
+  const label = (f) => f.split('/').pop().replace(' — для просмотра.webm', '');
+  const open = (f) => { v.src = encodeURI(f); nameEl.textContent = label(f); };
+  if (files.length > 1) {
+    const bar = document.createElement('div');
+    bar.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;justify-content:center';
+    files.forEach((f) => {
+      const t = document.createElement('button');
+      t.textContent = label(f);
+      t.style.cssText = 'font-size:14px;padding:8px 16px;background:#4A3D34;color:#F3EAE0';
+      t.onclick = () => open(f);
+      bar.appendChild(t);
+    });
+    document.body.insertBefore(bar, nameEl);
+  }
+  open(files[0] || '');
+  b.onclick = () => { if (v.paused) v.play(); else v.pause(); };
+  v.onplay = () => { b.textContent = '❚❚ Пауза'; };
+  v.onpause = () => { b.textContent = '▶ Смотреть'; };
+  v.onclick = (e) => { e.preventDefault(); b.onclick(); };
+</script>
+</body>
+</html>
